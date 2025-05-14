@@ -78,8 +78,8 @@ const ColorGuessingGame = () => {
       <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-pink-100 to-blue-100 py-12 px-4">
         <div className="max-w-md w-full bg-white rounded-xl shadow-2xl p-8 flex flex-col items-center">
-          <h1 className="text-3xl font-bold text-indigo-700 mb-4">Color Guessing Game</h1>
-          <p className="mb-2 text-lg">Guess the correct color name! Options increase as you progress.</p>
+          <h1 className="text-3xl font-bold text-indigo-700 mb-4">Color Guess</h1>
+          <p className="mb-2 text-lg">Match the color with the correct option! Options increase as you progress.</p>
           <div className="mb-2 text-lg font-semibold">Round: {round} / {MAX_ROUNDS}</div>
           <div className="mb-2 text-lg">Score: {score} | Mistakes: {mistakes}</div>
           <div className="w-32 h-32 rounded-lg mb-6 border-4 border-gray-300 shadow-lg" style={{ background: target ? target.hex : '#fff' }} />

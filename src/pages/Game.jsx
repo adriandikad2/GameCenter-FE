@@ -66,7 +66,7 @@ function Game() {
         },
         {
             id: 'colorguess',
-            title: 'Color Guessing Game',
+            title: 'Color Guess',
             description: 'Match the correct color! Options increase as you progress.',
             path: '/game/colorguess',
             color: 'from-[rgb(0,245,255)] to-[rgb(255,0,255)]',
@@ -122,8 +122,8 @@ function Game() {
                                         </div>
                                         {isColorGuess ? (
                                             <div className="bg-white rounded-xl p-3 mb-2">
-                                                <h3 className="text-2xl font-bold text-gray-900 mb-1 text-center">{game.title}</h3>
-                                                <p className="text-gray-700 text-opacity-90 text-center">{game.description}</p>
+                                                <h3 className="text-2xl font-bold text-gray-900 mb-1">{game.title}</h3>
+                                                <p className="text-gray-700 text-opacity-90 mb-0">{game.description}</p>
                                             </div>
                                         ) : (
                                             <>

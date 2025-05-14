@@ -11,7 +11,7 @@ import TypingGame from './pages/TypingGame';
 import SimonSays from './pages/SimonSays';
 import MemoryMatch from './pages/MemoryMatch';
 import WhackAMole from './pages/WhackAMole';
-import ColorGuessingGame from './pages/ColorGuessingGame';
+import ColorGuessingGame from './pages/ColorGuessing';
 import PatternRepeater from './pages/PatternRepeater';
 import QuickMathChallenge from './pages/QuickMathChallenge';
 
