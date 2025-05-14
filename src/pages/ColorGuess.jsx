@@ -148,7 +148,7 @@ const ColorGuess = () => {
   }, [round, gameOver, win]);
 
   const startRound = (r) => {
-    const optionCount = Math.min(3 + Math.floor((r - 1) / 3), 9);
+    const optionCount = Math.min(4 + Math.floor((r - 1) / 2), 12);
     const opts = getRandomColors(optionCount);
     const tgt = opts[Math.floor(Math.random() * opts.length)];
     setOptions(opts);
