@@ -23,6 +23,7 @@ const MemoryMatch = () => {
   const [timer, setTimer] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [gameOver, setGameOver] = useState(false);
+  const [cooldown, setCooldown] = useState(false);
 
   useEffect(() => {
     startGame();
@@ -56,7 +57,9 @@ const MemoryMatch = () => {
   };
 
   const handleFlip = (idx) => {
-    if (flipped.length === 2 || flipped.includes(idx) || matched.includes(idx) || gameOver) return;
+    if (flipped.length === 2 || flipped.includes(idx) || matched.includes(idx) || gameOver || cooldown) return;
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), 600);
     const newFlipped = [...flipped, idx];
     setFlipped(newFlipped);
     if (newFlipped.length === 2) {

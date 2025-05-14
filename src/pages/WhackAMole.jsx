@@ -21,6 +21,7 @@ const WhackAMole = () => {
   const [activeMole, setActiveMole] = useState(null);
   const [gameActive, setGameActive] = useState(false);
   const [moleTimeout, setMoleTimeout] = useState(null);
+  const [cooldown, setCooldown] = useState(false);
   const timerRef = useRef();
 
   useEffect(() => {
@@ -60,13 +61,13 @@ const WhackAMole = () => {
     setMoleTimeout(timeout);
   };
 
-  const handleWhack = (idx) => {
-    if (gameActive && idx === activeMole) {
-      setScore((s) => s + 1);
-      setActiveMole(null);
-      clearTimeout(moleTimeout);
-      setTimeout(popUpMole, 200);
-    }
+  const handleMoleClick = (idx) => {
+    if (!gameActive || idx !== activeMole || cooldown) return;
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), 400);
+    setScore((s) => s + 1);
+    setActiveMole(null);
+    setTimeout(popUpMole, 200);
   };
 
   const startGame = () => {
@@ -93,7 +94,7 @@ const WhackAMole = () => {
                 key={idx}
                 className="w-24 h-24 bg-transparent relative focus:outline-none"
                 style={{ position: 'relative' }}
-                onClick={() => handleWhack(idx)}
+                onClick={() => handleMoleClick(idx)}
                 disabled={!gameActive}
                 aria-label={activeMole === idx ? 'Mole' : 'Hole'}
               >

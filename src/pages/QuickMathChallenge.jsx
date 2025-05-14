@@ -55,6 +55,7 @@ const QuickMathChallenge = () => {
   const [gameOver, setGameOver] = useState(false);
   const [win, setWin] = useState(false);
   const [anim, setAnim] = useState(false);
+  const [inputDisabled, setInputDisabled] = useState(false);
   const timerRef = useRef();
 
   useEffect(() => {
@@ -77,6 +78,7 @@ const QuickMathChallenge = () => {
 
   const handleTimeout = () => {
     if (gameOver || win) return;
+    setInputDisabled(true);
     setMistakes((m) => m + 1);
     setAnim(true);
     setTimeout(() => {
@@ -86,6 +88,7 @@ const QuickMathChallenge = () => {
         setRound((r) => r + 1);
         setEquation(generateEquation(round + 1));
         setInput('');
+        setInputDisabled(false);
       }
     }, 1000);
   };
@@ -96,7 +99,8 @@ const QuickMathChallenge = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (gameOver || win) return;
+    if (gameOver || win || inputDisabled) return;
+    setInputDisabled(true);
     if (parseInt(input) === equation.answer) {
       setScore((s) => s + 1);
       setAnim(true);
@@ -107,6 +111,7 @@ const QuickMathChallenge = () => {
           setRound((r) => r + 1);
           setEquation(generateEquation(round + 1));
           setInput('');
+          setInputDisabled(false);
         }
       }, 500);
     } else {
@@ -119,6 +124,7 @@ const QuickMathChallenge = () => {
           setRound((r) => r + 1);
           setEquation(generateEquation(round + 1));
           setInput('');
+          setInputDisabled(false);
         }
       }, 1000);
     }
@@ -161,13 +167,13 @@ const QuickMathChallenge = () => {
                 className="border-2 border-pink-400 rounded-md px-4 py-2 text-xl w-28 text-center focus:outline-none focus:ring-2 focus:ring-pink-300"
                 value={input}
                 onChange={handleInput}
-                disabled={gameOver || win || anim}
+                disabled={gameOver || win || anim || inputDisabled}
                 autoFocus
               />
               <button
                 type="submit"
                 className="px-4 py-2 bg-pink-500 text-white rounded-md font-bold shadow hover:bg-pink-600 disabled:opacity-50"
-                disabled={gameOver || win || anim || input === ''}
+                disabled={gameOver || win || anim || inputDisabled || input === ''}
               >
                 Go
               </button>

@@ -16,6 +16,7 @@ const SimonSays = () => {
   const [message, setMessage] = useState('');
   const [activeColor, setActiveColor] = useState(null);
   const [gameOver, setGameOver] = useState(false);
+  const [cooldown, setCooldown] = useState(false);
 
   useEffect(() => {
     if (!gameOver) startNewRound();
@@ -47,7 +48,9 @@ const SimonSays = () => {
   };
 
   const handleColorClick = (color) => {
-    if (!isUserTurn || gameOver) return;
+    if (!isUserTurn || gameOver || cooldown) return;
+    setCooldown(true);
+    setTimeout(() => setCooldown(false), 400);
     const newInput = [...userInput, color];
     setUserInput(newInput);
     setActiveColor(color);
