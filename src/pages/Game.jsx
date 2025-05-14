@@ -27,7 +27,7 @@ function Game() {
         {
             id: 'pong',
             title: 'Pong',
-            description: 'Classic paddle game where you compete against the computer.',
+            description: 'Classic paddle game where you compete against each other. Use WASD for player 1 and arrow keys for player 2.',
             path: '/game/pong',
             color: 'from-red-500 to-rose-700',
             iconSrc: '/pong.png',
