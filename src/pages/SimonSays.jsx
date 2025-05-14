@@ -26,11 +26,13 @@ const SimonSays = () => {
     setMessage('Watch the pattern!');
     setUserInput([]);
     setIsUserTurn(false);
-    setTimeout(() => {
-      const newSequence = [...sequence, getRandomColor()];
-      setSequence(newSequence);
-      playSequence(newSequence);
-    }, 800);
+    setSequence((prev) => {
+      const newSequence = [...prev, getRandomColor()];
+      setTimeout(() => {
+        playSequence(newSequence);
+      }, 800);
+      return newSequence;
+    });
   };
 
   const playSequence = async (seq) => {
@@ -74,7 +76,10 @@ const SimonSays = () => {
     setMessage('');
     setActiveColor(null);
     setGameOver(false);
-    setTimeout(() => startNewRound(), 500);
+    setTimeout(() => {
+      setSequence([]); // ensure sequence is cleared before new round
+      startNewRound();
+    }, 500);
   };
 
   return (

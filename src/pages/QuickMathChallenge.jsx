@@ -76,6 +76,7 @@ const QuickMathChallenge = () => {
   }, [round, equation, gameOver, win]);
 
   const handleTimeout = () => {
+    if (gameOver || win) return;
     setMistakes((m) => m + 1);
     setAnim(true);
     setTimeout(() => {
@@ -95,6 +96,7 @@ const QuickMathChallenge = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (gameOver || win) return;
     if (parseInt(input) === equation.answer) {
       setScore((s) => s + 1);
       setAnim(true);
