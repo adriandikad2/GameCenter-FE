@@ -67,7 +67,7 @@ function Game() {
         {
             id: 'colorguess',
             title: 'Color Guessing Game',
-            description: 'Guess the color name! Options increase as you progress.',
+            description: 'Match the correct color! Options increase as you progress.',
             path: '/game/colorguess',
             color: 'from-[rgb(0,245,255)] to-[rgb(255,0,255)]',
             iconSrc: '/colorguess.png',
